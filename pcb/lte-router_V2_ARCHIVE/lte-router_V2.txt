@@ -1,0 +1,17 @@
+DIMENSION: 50.0mm * 80.0mm
+Clearances min: 8 mil
+Conductor Width min: 8 mil
+Holes min: 0.3 mm
+
+Layer1 lte-router_V2.GTL
+Layer2 lte-router_V2.G1
+Layer3 lte-router_V2.G2
+Layer4 lte-router_V2.GBL
+
+Assembly side: 2
+Impedans control No
+Number of Unique Parts 46
+Number of SMT Parts 100
+Number of BGA/QFP Parts: 0
+Number of Through-Hole Parts 5
+

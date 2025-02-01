@@ -1,0 +1,8 @@
+*.o
+*.bin
+*.a
+*.elf
+*.hex
+*.lst
+*.map
+.gdb_history

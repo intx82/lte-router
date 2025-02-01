@@ -1,0 +1,17 @@
+- [ ] C6 to 0603 or type-a tantal
+- [ ] c18 - 0402
+- [ ] vt3 (ap2301b) wrong case, sot23-6 instead of sot23-3
+- [ ] power switch latch change to ch32v003
+	- [ ] PD3 - enable (to base vt2)
+	- [ ] PD4 - button
+	- [ ] PC1 - I2C-SDA (25 pin hlk-7688)
+	- [ ] PC2 - I2C-SCL (24 pin hlk-7688)
+	- [ ] PA2 - voltage divider 470k/470k to battery (before tp4056)
+	- [ ] PC6 - WS2812
+	- [ ] PD1 - SWD (SWIO)
+	- [ ] wwan/wpan/wlan led - to one pin
+	- [ ] power tp4056 - one pin
+	- [ ] charge tp4056 - one pin
+- [ ] sim card set connector with loading from top, not from side
+- [ ] add 10k pull-up for sd-card (@see link-it 7688 schematic)
+- [ ] add zero resistor to avoid dw01
