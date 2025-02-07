@@ -1668,7 +1668,7 @@ CONFIG_PACKAGE_libgcc=y
 CONFIG_PACKAGE_libgomp=m
 CONFIG_PACKAGE_libpthread=y
 CONFIG_PACKAGE_librt=y
-CONFIG_PACKAGE_libstdcpp=m
+CONFIG_PACKAGE_libstdcpp=y
 CONFIG_PACKAGE_logd=y
 CONFIG_PACKAGE_mtd=y
 CONFIG_PACKAGE_netifd=y
@@ -2342,22 +2342,22 @@ CONFIG_PACKAGE_kmod-pmbus-zl6100=m
 #
 # I2C support
 #
-CONFIG_PACKAGE_kmod-i2c-algo-bit=m
+CONFIG_PACKAGE_kmod-i2c-algo-bit=y
 CONFIG_PACKAGE_kmod-i2c-algo-pca=m
 CONFIG_PACKAGE_kmod-i2c-algo-pcf=m
 CONFIG_PACKAGE_kmod-i2c-ccgs-ucsi=m
-CONFIG_PACKAGE_kmod-i2c-core=m
+CONFIG_PACKAGE_kmod-i2c-core=y
 CONFIG_PACKAGE_kmod-i2c-designware-core=m
 CONFIG_PACKAGE_kmod-i2c-designware-pci=m
-CONFIG_PACKAGE_kmod-i2c-gpio=m
-CONFIG_PACKAGE_kmod-i2c-mt7628=m
-CONFIG_PACKAGE_kmod-i2c-mux=m
+CONFIG_PACKAGE_kmod-i2c-gpio=y
+CONFIG_PACKAGE_kmod-i2c-mt7628=y
+CONFIG_PACKAGE_kmod-i2c-mux=y
 CONFIG_PACKAGE_kmod-i2c-mux-gpio=m
 CONFIG_PACKAGE_kmod-i2c-mux-pca9541=m
 CONFIG_PACKAGE_kmod-i2c-mux-pca954x=m
-CONFIG_PACKAGE_kmod-i2c-mux-reg=m
+CONFIG_PACKAGE_kmod-i2c-mux-reg=y
 CONFIG_PACKAGE_kmod-i2c-pxa=m
-CONFIG_PACKAGE_kmod-i2c-smbus=m
+CONFIG_PACKAGE_kmod-i2c-smbus=y
 CONFIG_PACKAGE_kmod-i2c-tiny-usb=m
 # end of I2C support
 
@@ -2405,7 +2405,7 @@ CONFIG_PACKAGE_kmod-industrialio-triggered-buffer=m
 #
 CONFIG_PACKAGE_kmod-hid=m
 CONFIG_PACKAGE_kmod-hid-generic=m
-CONFIG_PACKAGE_kmod-input-core=m
+CONFIG_PACKAGE_kmod-input-core=y
 CONFIG_PACKAGE_kmod-input-evdev=m
 CONFIG_PACKAGE_kmod-input-gpio-encoder=m
 CONFIG_PACKAGE_kmod-input-gpio-keys=m
@@ -2941,7 +2941,7 @@ CONFIG_PACKAGE_kmod-spi-gpio=m
 #
 # Sound Support
 #
-CONFIG_PACKAGE_kmod-sound-core=m
+CONFIG_PACKAGE_kmod-sound-core=y
 CONFIG_PACKAGE_kmod-ac97=m
 CONFIG_PACKAGE_kmod-sound-dummy=m
 CONFIG_PACKAGE_kmod-sound-ens1371=m
@@ -2974,7 +2974,7 @@ CONFIG_PACKAGE_kmod-usb-audio=m
 # USB Support
 #
 CONFIG_PACKAGE_kmod-chaoskey=m
-CONFIG_PACKAGE_kmod-usb-acm=m
+CONFIG_PACKAGE_kmod-usb-acm=y
 CONFIG_PACKAGE_kmod-usb-atm=m
 CONFIG_PACKAGE_kmod-usb-atm-cxacru=m
 CONFIG_PACKAGE_kmod-usb-atm-speedtouch=m
@@ -3556,13 +3556,15 @@ CONFIG_PACKAGE_python3-base=m
 # CONFIG_PACKAGE_python3-cached-property is not set
 # CONFIG_PACKAGE_python3-cachelib is not set
 # CONFIG_PACKAGE_python3-cachetools is not set
-# CONFIG_PACKAGE_python3-certifi is not set
+CONFIG_PACKAGE_python3-certifi=m
+# CONFIG_PACKAGE_python3-certifi-src is not set
 # CONFIG_PACKAGE_python3-cffi is not set
 CONFIG_PACKAGE_python3-cgi=m
 # CONFIG_PACKAGE_python3-cgi-src is not set
 CONFIG_PACKAGE_python3-cgitb=m
 # CONFIG_PACKAGE_python3-cgitb-src is not set
-# CONFIG_PACKAGE_python3-chardet is not set
+CONFIG_PACKAGE_python3-chardet=m
+# CONFIG_PACKAGE_python3-chardet-src is not set
 # CONFIG_PACKAGE_python3-charset-normalizer is not set
 # CONFIG_PACKAGE_python3-ciso8601 is not set
 # CONFIG_PACKAGE_python3-click is not set
@@ -3588,7 +3590,8 @@ CONFIG_PACKAGE_python3-decimal=m
 # CONFIG_PACKAGE_python3-decorator is not set
 # CONFIG_PACKAGE_python3-defusedxml is not set
 # CONFIG_PACKAGE_python3-dev is not set
-# CONFIG_PACKAGE_python3-distro is not set
+CONFIG_PACKAGE_python3-distro=m
+# CONFIG_PACKAGE_python3-distro-src is not set
 CONFIG_PACKAGE_python3-distutils=m
 # CONFIG_PACKAGE_python3-distutils-src is not set
 # CONFIG_PACKAGE_python3-django is not set
@@ -3623,11 +3626,14 @@ CONFIG_PACKAGE_python3-email=m
 # CONFIG_PACKAGE_python3-gevent is not set
 # CONFIG_PACKAGE_python3-gmpy2 is not set
 # CONFIG_PACKAGE_python3-gnupg is not set
-# CONFIG_PACKAGE_python3-gpiod is not set
+CONFIG_PACKAGE_python3-gpiod=m
+# CONFIG_PACKAGE_python3-gpiod-src is not set
 # CONFIG_PACKAGE_python3-greenlet is not set
 # CONFIG_PACKAGE_python3-hyperlink is not set
-# CONFIG_PACKAGE_python3-idna is not set
-# CONFIG_PACKAGE_python3-ifaddr is not set
+CONFIG_PACKAGE_python3-idna=m
+# CONFIG_PACKAGE_python3-idna-src is not set
+CONFIG_PACKAGE_python3-ifaddr=m
+# CONFIG_PACKAGE_python3-ifaddr-src is not set
 # CONFIG_PACKAGE_python3-incremental is not set
 # CONFIG_PACKAGE_python3-influxdb is not set
 # CONFIG_PACKAGE_python3-iniconfig is not set
@@ -3654,7 +3660,8 @@ CONFIG_PACKAGE_python3-light=m
 CONFIG_PACKAGE_python3-logging=m
 # CONFIG_PACKAGE_python3-logging-src is not set
 # CONFIG_PACKAGE_python3-lru-dict is not set
-# CONFIG_PACKAGE_python3-lxml is not set
+CONFIG_PACKAGE_python3-lxml=m
+# CONFIG_PACKAGE_python3-lxml-src is not set
 CONFIG_PACKAGE_python3-lzma=m
 # CONFIG_PACKAGE_python3-lzma-src is not set
 # CONFIG_PACKAGE_python3-markdown is not set
@@ -3668,7 +3675,8 @@ CONFIG_PACKAGE_python3-multiprocessing=m
 CONFIG_PACKAGE_python3-ncurses=m
 # CONFIG_PACKAGE_python3-ncurses-src is not set
 # CONFIG_PACKAGE_python3-netdisco is not set
-# CONFIG_PACKAGE_python3-netifaces is not set
+CONFIG_PACKAGE_python3-netifaces=m
+# CONFIG_PACKAGE_python3-netifaces-src is not set
 # CONFIG_PACKAGE_python3-networkx is not set
 # CONFIG_PACKAGE_python3-newt is not set
 
@@ -3685,12 +3693,14 @@ CONFIG_PACKAGE_python3-openssl=m
 # CONFIG_PACKAGE_python3-outcome is not set
 # CONFIG_PACKAGE_python3-packages is not set
 # CONFIG_PACKAGE_python3-packaging is not set
-# CONFIG_PACKAGE_python3-paho-mqtt is not set
+CONFIG_PACKAGE_python3-paho-mqtt=m
+# CONFIG_PACKAGE_python3-paho-mqtt-src is not set
 # CONFIG_PACKAGE_python3-paramiko is not set
 # CONFIG_PACKAGE_python3-parsley is not set
 # CONFIG_PACKAGE_python3-passlib is not set
 # CONFIG_PACKAGE_python3-pillow is not set
-# CONFIG_PACKAGE_python3-pip is not set
+CONFIG_PACKAGE_python3-pip=m
+# CONFIG_PACKAGE_python3-pip-src is not set
 # CONFIG_PACKAGE_python3-pkg-resources is not set
 # CONFIG_PACKAGE_python3-platformdirs is not set
 # CONFIG_PACKAGE_python3-pluggy is not set
@@ -3729,7 +3739,8 @@ CONFIG_PACKAGE_python3-pyserial=m
 CONFIG_PACKAGE_python3-readline=m
 # CONFIG_PACKAGE_python3-readline-src is not set
 # CONFIG_PACKAGE_python3-referencing is not set
-# CONFIG_PACKAGE_python3-requests is not set
+CONFIG_PACKAGE_python3-requests=m
+# CONFIG_PACKAGE_python3-requests-src is not set
 # CONFIG_PACKAGE_python3-rpds-py is not set
 # CONFIG_PACKAGE_python3-rsa is not set
 # CONFIG_PACKAGE_python3-ruamel-yaml is not set
@@ -3745,9 +3756,10 @@ CONFIG_PACKAGE_python3-readline=m
 # CONFIG_PACKAGE_python3-service-identity is not set
 # CONFIG_PACKAGE_python3-setools is not set
 # CONFIG_PACKAGE_python3-setuptools is not set
-# CONFIG_PACKAGE_python3-six is not set
+CONFIG_PACKAGE_python3-six=m
+# CONFIG_PACKAGE_python3-six-src is not set
 # CONFIG_PACKAGE_python3-slugify is not set
-# CONFIG_PACKAGE_python3-smbus is not set
+CONFIG_PACKAGE_python3-smbus=m
 # CONFIG_PACKAGE_python3-sniffio is not set
 # CONFIG_PACKAGE_python3-socketio is not set
 # CONFIG_PACKAGE_python3-sortedcontainers is not set
@@ -3766,17 +3778,20 @@ CONFIG_PACKAGE_python3-sqlite3=m
 # CONFIG_PACKAGE_python3-twisted is not set
 # CONFIG_PACKAGE_python3-typing-extensions is not set
 # CONFIG_PACKAGE_python3-ubus is not set
-# CONFIG_PACKAGE_python3-uci is not set
+CONFIG_PACKAGE_python3-uci=m
+# CONFIG_PACKAGE_python3-uci-src is not set
 # CONFIG_PACKAGE_python3-unidecode is not set
 CONFIG_PACKAGE_python3-unittest=m
 # CONFIG_PACKAGE_python3-unittest-src is not set
 CONFIG_PACKAGE_python3-urllib=m
 # CONFIG_PACKAGE_python3-urllib-src is not set
-# CONFIG_PACKAGE_python3-urllib3 is not set
+CONFIG_PACKAGE_python3-urllib3=m
+# CONFIG_PACKAGE_python3-urllib3-src is not set
 # CONFIG_PACKAGE_python3-userpath is not set
 CONFIG_PACKAGE_python3-uuid=m
 # CONFIG_PACKAGE_python3-uuid-src is not set
-# CONFIG_PACKAGE_python3-venv is not set
+CONFIG_PACKAGE_python3-venv=m
+# CONFIG_PACKAGE_python3-venv-src is not set
 # CONFIG_PACKAGE_python3-vobject is not set
 # CONFIG_PACKAGE_python3-voluptuous is not set
 # CONFIG_PACKAGE_python3-voluptuous-serialize is not set
@@ -3871,7 +3886,7 @@ CONFIG_PACKAGE_liblzma=m
 # CONFIG_PACKAGE_libodbcinst is not set
 # CONFIG_PACKAGE_libpq is not set
 # CONFIG_PACKAGE_libpqxx is not set
-CONFIG_PACKAGE_libsqlite3=m
+CONFIG_PACKAGE_libsqlite3=y
 
 #
 # Configuration
@@ -3900,7 +3915,7 @@ CONFIG_SQLITE3_RTREE=y
 # Filesystem
 #
 # CONFIG_PACKAGE_libacl is not set
-# CONFIG_PACKAGE_libattr is not set
+CONFIG_PACKAGE_libattr=y
 # CONFIG_PACKAGE_libfuse is not set
 # CONFIG_PACKAGE_libfuse3 is not set
 # CONFIG_PACKAGE_libow is not set
@@ -4469,7 +4484,7 @@ CONFIG_MBEDTLS_SSL_TLS1_3_KEY_EXCHANGE_MODE_PSK_EPHEMERAL_ENABLED=y
 CONFIG_MBEDTLS_ENTROPY_FORCE_SHA256=y
 # CONFIG_MBEDTLS_SSL_RENEGOTIATION is not set
 # CONFIG_PACKAGE_libnss is not set
-CONFIG_PACKAGE_libopenssl=m
+CONFIG_PACKAGE_libopenssl=y
 
 #
 # Build Options
@@ -4557,21 +4572,21 @@ CONFIG_WOLFSSL_ALT_NAMES=y
 #
 # CONFIG_PACKAGE_bcg729 is not set
 # CONFIG_PACKAGE_dahdi-tools-libtonezone is not set
-# CONFIG_PACKAGE_gsmlib is not set
+CONFIG_PACKAGE_gsmlib=y
 # CONFIG_PACKAGE_libctb is not set
 # CONFIG_PACKAGE_libfreetdm is not set
 # CONFIG_PACKAGE_libiksemel is not set
 # CONFIG_PACKAGE_libks is not set
 # CONFIG_PACKAGE_libosip2 is not set
-# CONFIG_PACKAGE_libpj is not set
-# CONFIG_PACKAGE_libpjlib-util is not set
-# CONFIG_PACKAGE_libpjmedia is not set
-# CONFIG_PACKAGE_libpjnath is not set
-# CONFIG_PACKAGE_libpjsip is not set
-# CONFIG_PACKAGE_libpjsip-simple is not set
-# CONFIG_PACKAGE_libpjsip-ua is not set
-# CONFIG_PACKAGE_libpjsua is not set
-# CONFIG_PACKAGE_libpjsua2 is not set
+CONFIG_PACKAGE_libpj=y
+CONFIG_PACKAGE_libpjlib-util=y
+CONFIG_PACKAGE_libpjmedia=y
+CONFIG_PACKAGE_libpjnath=y
+CONFIG_PACKAGE_libpjsip=y
+CONFIG_PACKAGE_libpjsip-simple=y
+CONFIG_PACKAGE_libpjsip-ua=y
+CONFIG_PACKAGE_libpjsua=y
+CONFIG_PACKAGE_libpjsua2=y
 # CONFIG_PACKAGE_libre is not set
 # CONFIG_PACKAGE_libspandsp is not set
 # CONFIG_PACKAGE_libspandsp3 is not set
@@ -4635,7 +4650,7 @@ CONFIG_HAVE_MESA=y
 
 # CONFIG_PACKAGE_abseil-cpp is not set
 # CONFIG_PACKAGE_acsccid is not set
-# CONFIG_PACKAGE_alsa-lib is not set
+CONFIG_PACKAGE_alsa-lib=y
 # CONFIG_PACKAGE_argp-standalone is not set
 # CONFIG_PACKAGE_bind-libs is not set
 # CONFIG_PACKAGE_bluez-libs is not set
@@ -4654,7 +4669,7 @@ CONFIG_HAVE_MESA=y
 # CONFIG_PACKAGE_ell is not set
 # CONFIG_PACKAGE_getdns is not set
 # CONFIG_PACKAGE_giflib is not set
-# CONFIG_PACKAGE_glib2 is not set
+CONFIG_PACKAGE_glib2=y
 # CONFIG_PACKAGE_glslang is not set
 # CONFIG_PACKAGE_google-authenticator-libpam is not set
 # CONFIG_PACKAGE_hidapi is not set
@@ -4690,7 +4705,8 @@ CONFIG_PACKAGE_libblkid=y
 CONFIG_PACKAGE_libblobmsg-json=y
 CONFIG_PACKAGE_libbpf=m
 # CONFIG_PACKAGE_libbsd is not set
-# CONFIG_PACKAGE_libcap is not set
+CONFIG_PACKAGE_libcap=y
+# CONFIG_PACKAGE_libcap-bin is not set
 # CONFIG_PACKAGE_libcap-ng is not set
 # CONFIG_PACKAGE_libcares is not set
 # CONFIG_PACKAGE_libcbor is not set
@@ -4722,6 +4738,7 @@ CONFIG_LIBCURL_FILE=y
 CONFIG_LIBCURL_FTP=y
 # CONFIG_LIBCURL_GOPHER is not set
 CONFIG_LIBCURL_HTTP=y
+# CONFIG_LIBCURL_WEBSOCKETS is not set
 CONFIG_LIBCURL_COOKIES=y
 # CONFIG_LIBCURL_IMAP is not set
 # CONFIG_LIBCURL_LDAP is not set
@@ -4764,20 +4781,20 @@ CONFIG_PACKAGE_libdevmapper=y
 # CONFIG_PACKAGE_libdw is not set
 # CONFIG_PACKAGE_libe2p is not set
 # CONFIG_PACKAGE_libecdsautil is not set
-# CONFIG_PACKAGE_libedit is not set
+CONFIG_PACKAGE_libedit=y
 CONFIG_PACKAGE_libelf=m
 # CONFIG_PACKAGE_libesmtp is not set
 # CONFIG_PACKAGE_libestr is not set
 # CONFIG_PACKAGE_libev is not set
 CONFIG_PACKAGE_libevdev=y
 # CONFIG_PACKAGE_libevent2 is not set
-# CONFIG_PACKAGE_libevent2-core is not set
+CONFIG_PACKAGE_libevent2-core=y
 # CONFIG_PACKAGE_libevent2-extra is not set
 # CONFIG_PACKAGE_libevent2-openssl is not set
-# CONFIG_PACKAGE_libevent2-pthreads is not set
+CONFIG_PACKAGE_libevent2-pthreads=y
 # CONFIG_PACKAGE_libexif is not set
 # CONFIG_PACKAGE_libexpat is not set
-# CONFIG_PACKAGE_libexslt is not set
+CONFIG_PACKAGE_libexslt=m
 # CONFIG_PACKAGE_libext2fs is not set
 # CONFIG_PACKAGE_libextractor is not set
 # CONFIG_PACKAGE_libf2fs is not set
@@ -4786,7 +4803,7 @@ CONFIG_PACKAGE_libevdev=y
 # CONFIG_PACKAGE_libfastjson is not set
 # CONFIG_PACKAGE_libfdisk is not set
 # CONFIG_PACKAGE_libfdt is not set
-CONFIG_PACKAGE_libffi=m
+CONFIG_PACKAGE_libffi=y
 # CONFIG_PACKAGE_libffmpeg-audio-dec is not set
 # CONFIG_PACKAGE_libffmpeg-custom is not set
 # CONFIG_PACKAGE_libffmpeg-full is not set
@@ -4823,9 +4840,9 @@ CONFIG_PACKAGE_libgpiod=y
 # CONFIG_PACKAGE_libhiredis is not set
 # CONFIG_PACKAGE_libhttp-parser is not set
 # CONFIG_PACKAGE_libhwloc is not set
-# CONFIG_PACKAGE_libi2c is not set
+CONFIG_PACKAGE_libi2c=y
 # CONFIG_PACKAGE_libical is not set
-# CONFIG_PACKAGE_libiconv-full is not set
+CONFIG_PACKAGE_libiconv-full=y
 # CONFIG_PACKAGE_libid3tag is not set
 # CONFIG_PACKAGE_libidn is not set
 # CONFIG_PACKAGE_libidn2 is not set
@@ -4862,7 +4879,7 @@ CONFIG_PACKAGE_libkeyutils=y
 # CONFIG_PACKAGE_libmagic is not set
 # CONFIG_PACKAGE_libmanette is not set
 # CONFIG_PACKAGE_libmaxminddb is not set
-# CONFIG_PACKAGE_libmbim is not set
+CONFIG_PACKAGE_libmbim=y
 # CONFIG_PACKAGE_libmcrypt is not set
 # CONFIG_PACKAGE_libmd is not set
 # CONFIG_PACKAGE_libmicrohttpd-no-ssl is not set
@@ -4944,7 +4961,8 @@ CONFIG_PACKAGE_libpcap=y
 
 # CONFIG_PACKAGE_libpci is not set
 # CONFIG_PACKAGE_libpciaccess is not set
-# CONFIG_PACKAGE_libpcre2 is not set
+CONFIG_PACKAGE_libpcre2=y
+# CONFIG_PCRE2_JIT_ENABLED is not set
 # CONFIG_PACKAGE_libpcre2-16 is not set
 # CONFIG_PACKAGE_libpcre2-32 is not set
 # CONFIG_PACKAGE_libpcsclite is not set
@@ -4952,13 +4970,24 @@ CONFIG_PACKAGE_libpcap=y
 # CONFIG_PACKAGE_libpkcs11-spy is not set
 # CONFIG_PACKAGE_libpkgconf is not set
 # CONFIG_PACKAGE_libpng is not set
-# CONFIG_PACKAGE_libpopt is not set
+CONFIG_PACKAGE_libpopt=y
 # CONFIG_PACKAGE_libpri is not set
 # CONFIG_PACKAGE_libprotobuf-c is not set
 # CONFIG_PACKAGE_libpsl is not set
-# CONFIG_PACKAGE_libqmi is not set
+CONFIG_PACKAGE_libqmi=y
+
+#
+# Configuration
+#
+CONFIG_LIBQMI_WITH_MBIM_QMUX=y
+CONFIG_LIBQMI_WITH_QRTR_GLIB=y
+# CONFIG_LIBQMI_COLLECTION_MINIMAL is not set
+CONFIG_LIBQMI_COLLECTION_BASIC=y
+# CONFIG_LIBQMI_COLLECTION_FULL is not set
+# end of Configuration
+
 # CONFIG_PACKAGE_libqrencode is not set
-# CONFIG_PACKAGE_libqrtr-glib is not set
+CONFIG_PACKAGE_libqrtr-glib=y
 # CONFIG_PACKAGE_libradcli is not set
 # CONFIG_PACKAGE_libradiotap is not set
 CONFIG_PACKAGE_libreadline=m
@@ -5059,9 +5088,9 @@ CONFIG_PACKAGE_libxdp=m
 # CONFIG_PACKAGE_libxerces-c is not set
 # CONFIG_PACKAGE_libxerces-c-samples is not set
 # CONFIG_PACKAGE_libxkbcommon is not set
-# CONFIG_PACKAGE_libxml2 is not set
+CONFIG_PACKAGE_libxml2=y
 # CONFIG_PACKAGE_libxmlb is not set
-# CONFIG_PACKAGE_libxslt is not set
+CONFIG_PACKAGE_libxslt=m
 # CONFIG_PACKAGE_libxxhash is not set
 # CONFIG_PACKAGE_libyaml-cpp is not set
 # CONFIG_PACKAGE_libyang is not set
@@ -5297,7 +5326,6 @@ CONFIG_PACKAGE_zlib=y
 # CONFIG_PACKAGE_luci-app-upnp is not set
 # CONFIG_PACKAGE_luci-app-usteer is not set
 # CONFIG_PACKAGE_luci-app-v2raya is not set
-# CONFIG_PACKAGE_luci-app-vnstat is not set
 # CONFIG_PACKAGE_luci-app-vnstat2 is not set
 # CONFIG_PACKAGE_luci-app-watchcat is not set
 # CONFIG_PACKAGE_luci-app-wifischedule is not set
@@ -5684,7 +5712,7 @@ CONFIG_PACKAGE_xtables-nft=m
 # CONFIG_PACKAGE_idn is not set
 # CONFIG_PACKAGE_idn2 is not set
 # CONFIG_PACKAGE_inadyn is not set
-CONFIG_PACKAGE_isc-dhcp-client-ipv4=y
+# CONFIG_PACKAGE_isc-dhcp-client-ipv4 is not set
 # CONFIG_PACKAGE_isc-dhcp-client-ipv6 is not set
 # CONFIG_PACKAGE_isc-dhcp-omshell-ipv4 is not set
 # CONFIG_PACKAGE_isc-dhcp-omshell-ipv6 is not set
@@ -6002,7 +6030,309 @@ CONFIG_PACKAGE_tc-tiny=m
 #
 # Telephony
 #
-# CONFIG_PACKAGE_asterisk is not set
+CONFIG_PACKAGE_asterisk=y
+
+#
+# Advanced configuration
+#
+# CONFIG_ASTERISK_LIBXSLT_SUPPORT is not set
+# CONFIG_ASTERISK_LOW_MEMORY is not set
+# end of Advanced configuration
+
+# CONFIG_PACKAGE_asterisk-app-adsiprog is not set
+# CONFIG_PACKAGE_asterisk-app-agent-pool is not set
+# CONFIG_PACKAGE_asterisk-app-alarmreceiver is not set
+# CONFIG_PACKAGE_asterisk-app-amd is not set
+# CONFIG_PACKAGE_asterisk-app-attended-transfer is not set
+# CONFIG_PACKAGE_asterisk-app-audiosocket is not set
+# CONFIG_PACKAGE_asterisk-app-authenticate is not set
+# CONFIG_PACKAGE_asterisk-app-blind-transfer is not set
+# CONFIG_PACKAGE_asterisk-app-bridgeaddchan is not set
+# CONFIG_PACKAGE_asterisk-app-bridgewait is not set
+# CONFIG_PACKAGE_asterisk-app-broadcast is not set
+# CONFIG_PACKAGE_asterisk-app-celgenuserevent is not set
+# CONFIG_PACKAGE_asterisk-app-chanisavail is not set
+# CONFIG_PACKAGE_asterisk-app-channelredirect is not set
+# CONFIG_PACKAGE_asterisk-app-chanspy is not set
+CONFIG_PACKAGE_asterisk-app-confbridge=y
+# CONFIG_PACKAGE_asterisk-app-controlplayback is not set
+# CONFIG_PACKAGE_asterisk-app-dictate is not set
+# CONFIG_PACKAGE_asterisk-app-directed-pickup is not set
+# CONFIG_PACKAGE_asterisk-app-directory is not set
+# CONFIG_PACKAGE_asterisk-app-disa is not set
+# CONFIG_PACKAGE_asterisk-app-dtmfstore is not set
+# CONFIG_PACKAGE_asterisk-app-dumpchan is not set
+# CONFIG_PACKAGE_asterisk-app-exec is not set
+# CONFIG_PACKAGE_asterisk-app-externalivr is not set
+# CONFIG_PACKAGE_asterisk-app-festival is not set
+# CONFIG_PACKAGE_asterisk-app-flash is not set
+# CONFIG_PACKAGE_asterisk-app-followme is not set
+# CONFIG_PACKAGE_asterisk-app-getcpeid is not set
+# CONFIG_PACKAGE_asterisk-app-if is not set
+# CONFIG_PACKAGE_asterisk-app-ivrdemo is not set
+# CONFIG_PACKAGE_asterisk-app-mf is not set
+# CONFIG_PACKAGE_asterisk-app-milliwatt is not set
+# CONFIG_PACKAGE_asterisk-app-minivm is not set
+# CONFIG_PACKAGE_asterisk-app-mixmonitor is not set
+# CONFIG_PACKAGE_asterisk-app-morsecode is not set
+# CONFIG_PACKAGE_asterisk-app-mp3 is not set
+# CONFIG_PACKAGE_asterisk-app-originate is not set
+# CONFIG_PACKAGE_asterisk-app-page is not set
+# CONFIG_PACKAGE_asterisk-app-playtones is not set
+# CONFIG_PACKAGE_asterisk-app-privacy is not set
+# CONFIG_PACKAGE_asterisk-app-queue is not set
+# CONFIG_PACKAGE_asterisk-app-read is not set
+# CONFIG_PACKAGE_asterisk-app-readexten is not set
+# CONFIG_PACKAGE_asterisk-app-record is not set
+# CONFIG_PACKAGE_asterisk-app-reload is not set
+# CONFIG_PACKAGE_asterisk-app-saycounted is not set
+# CONFIG_PACKAGE_asterisk-app-sayunixtime is not set
+# CONFIG_PACKAGE_asterisk-app-senddtmf is not set
+# CONFIG_PACKAGE_asterisk-app-sendtext is not set
+# CONFIG_PACKAGE_asterisk-app-sf is not set
+# CONFIG_PACKAGE_asterisk-app-signal is not set
+# CONFIG_PACKAGE_asterisk-app-skel is not set
+CONFIG_PACKAGE_asterisk-app-sms=y
+# CONFIG_PACKAGE_asterisk-app-softhangup is not set
+# CONFIG_PACKAGE_asterisk-app-speech is not set
+# CONFIG_PACKAGE_asterisk-app-stack is not set
+# CONFIG_PACKAGE_asterisk-app-stasis is not set
+# CONFIG_PACKAGE_asterisk-app-statsd is not set
+# CONFIG_PACKAGE_asterisk-app-stream-echo is not set
+# CONFIG_PACKAGE_asterisk-app-system is not set
+# CONFIG_PACKAGE_asterisk-app-talkdetect is not set
+# CONFIG_PACKAGE_asterisk-app-test is not set
+# CONFIG_PACKAGE_asterisk-app-transfer is not set
+# CONFIG_PACKAGE_asterisk-app-userevent is not set
+CONFIG_PACKAGE_asterisk-app-verbose=y
+# CONFIG_PACKAGE_asterisk-app-voicemail is not set
+# CONFIG_PACKAGE_asterisk-app-voicemail-imap is not set
+# CONFIG_PACKAGE_asterisk-app-voicemail-odbc is not set
+# CONFIG_PACKAGE_asterisk-app-waitforcond is not set
+# CONFIG_PACKAGE_asterisk-app-waitforring is not set
+# CONFIG_PACKAGE_asterisk-app-waitforsilence is not set
+# CONFIG_PACKAGE_asterisk-app-waituntil is not set
+# CONFIG_PACKAGE_asterisk-app-while is not set
+# CONFIG_PACKAGE_asterisk-app-zapateller is not set
+CONFIG_PACKAGE_asterisk-bridge-builtin-features=y
+# CONFIG_PACKAGE_asterisk-bridge-builtin-interval-features is not set
+# CONFIG_PACKAGE_asterisk-bridge-holding is not set
+# CONFIG_PACKAGE_asterisk-bridge-native-rtp is not set
+CONFIG_PACKAGE_asterisk-bridge-simple=y
+CONFIG_PACKAGE_asterisk-bridge-softmix=y
+# CONFIG_PACKAGE_asterisk-cdr is not set
+# CONFIG_PACKAGE_asterisk-cdr-csv is not set
+# CONFIG_PACKAGE_asterisk-cdr-sqlite3 is not set
+# CONFIG_PACKAGE_asterisk-cel-custom is not set
+# CONFIG_PACKAGE_asterisk-cel-manager is not set
+# CONFIG_PACKAGE_asterisk-cel-sqlite3-custom is not set
+# CONFIG_PACKAGE_asterisk-chan-alsa is not set
+# CONFIG_PACKAGE_asterisk-chan-audiosocket is not set
+# CONFIG_PACKAGE_asterisk-chan-bridge-media is not set
+# CONFIG_PACKAGE_asterisk-chan-console is not set
+# CONFIG_PACKAGE_asterisk-chan-dahdi is not set
+# CONFIG_PACKAGE_asterisk-chan-dongle is not set
+# CONFIG_PACKAGE_asterisk-chan-iax2 is not set
+# CONFIG_PACKAGE_asterisk-chan-mgcp is not set
+# CONFIG_PACKAGE_asterisk-chan-mobile is not set
+# CONFIG_PACKAGE_asterisk-chan-motif is not set
+# CONFIG_PACKAGE_asterisk-chan-ooh323 is not set
+# CONFIG_PACKAGE_asterisk-chan-rtp is not set
+# CONFIG_PACKAGE_asterisk-chan-sccp is not set
+CONFIG_PACKAGE_asterisk-chan-sip=y
+# CONFIG_PACKAGE_asterisk-chan-skinny is not set
+# CONFIG_PACKAGE_asterisk-chan-unistim is not set
+# CONFIG_PACKAGE_asterisk-codec-a-mu is not set
+# CONFIG_PACKAGE_asterisk-codec-adpcm is not set
+CONFIG_PACKAGE_asterisk-codec-alaw=y
+# CONFIG_PACKAGE_asterisk-codec-dahdi is not set
+# CONFIG_PACKAGE_asterisk-codec-g722 is not set
+# CONFIG_PACKAGE_asterisk-codec-g726 is not set
+# CONFIG_PACKAGE_asterisk-codec-g729 is not set
+CONFIG_PACKAGE_asterisk-codec-gsm=y
+# CONFIG_PACKAGE_asterisk-codec-ilbc is not set
+# CONFIG_PACKAGE_asterisk-codec-lpc10 is not set
+# CONFIG_PACKAGE_asterisk-codec-opus is not set
+# CONFIG_PACKAGE_asterisk-codec-resample is not set
+CONFIG_PACKAGE_asterisk-codec-ulaw=y
+# CONFIG_PACKAGE_asterisk-curl is not set
+# CONFIG_PACKAGE_asterisk-format-g719 is not set
+# CONFIG_PACKAGE_asterisk-format-g723 is not set
+# CONFIG_PACKAGE_asterisk-format-g726 is not set
+# CONFIG_PACKAGE_asterisk-format-g729 is not set
+# CONFIG_PACKAGE_asterisk-format-gsm is not set
+# CONFIG_PACKAGE_asterisk-format-h263 is not set
+# CONFIG_PACKAGE_asterisk-format-h264 is not set
+# CONFIG_PACKAGE_asterisk-format-ilbc is not set
+# CONFIG_PACKAGE_asterisk-format-ogg-opus is not set
+# CONFIG_PACKAGE_asterisk-format-ogg-vorbis is not set
+# CONFIG_PACKAGE_asterisk-format-pcm is not set
+# CONFIG_PACKAGE_asterisk-format-siren14 is not set
+# CONFIG_PACKAGE_asterisk-format-siren7 is not set
+# CONFIG_PACKAGE_asterisk-format-sln is not set
+# CONFIG_PACKAGE_asterisk-format-vox is not set
+CONFIG_PACKAGE_asterisk-format-wav=y
+# CONFIG_PACKAGE_asterisk-format-wav-gsm is not set
+# CONFIG_PACKAGE_asterisk-func-aes is not set
+# CONFIG_PACKAGE_asterisk-func-base64 is not set
+# CONFIG_PACKAGE_asterisk-func-blacklist is not set
+# CONFIG_PACKAGE_asterisk-func-callcompletion is not set
+# CONFIG_PACKAGE_asterisk-func-channel is not set
+# CONFIG_PACKAGE_asterisk-func-config is not set
+# CONFIG_PACKAGE_asterisk-func-cut is not set
+# CONFIG_PACKAGE_asterisk-func-db is not set
+# CONFIG_PACKAGE_asterisk-func-devstate is not set
+# CONFIG_PACKAGE_asterisk-func-dialgroup is not set
+# CONFIG_PACKAGE_asterisk-func-dialplan is not set
+# CONFIG_PACKAGE_asterisk-func-enum is not set
+# CONFIG_PACKAGE_asterisk-func-env is not set
+# CONFIG_PACKAGE_asterisk-func-evalexten is not set
+# CONFIG_PACKAGE_asterisk-func-export is not set
+# CONFIG_PACKAGE_asterisk-func-extstate is not set
+# CONFIG_PACKAGE_asterisk-func-frame-drop is not set
+# CONFIG_PACKAGE_asterisk-func-frame-trace is not set
+# CONFIG_PACKAGE_asterisk-func-global is not set
+# CONFIG_PACKAGE_asterisk-func-groupcount is not set
+# CONFIG_PACKAGE_asterisk-func-hangupcause is not set
+# CONFIG_PACKAGE_asterisk-func-holdintercept is not set
+# CONFIG_PACKAGE_asterisk-func-iconv is not set
+# CONFIG_PACKAGE_asterisk-func-jitterbuffer is not set
+# CONFIG_PACKAGE_asterisk-func-json is not set
+# CONFIG_PACKAGE_asterisk-func-lock is not set
+# CONFIG_PACKAGE_asterisk-func-math is not set
+# CONFIG_PACKAGE_asterisk-func-md5 is not set
+# CONFIG_PACKAGE_asterisk-func-module is not set
+# CONFIG_PACKAGE_asterisk-func-periodic-hook is not set
+# CONFIG_PACKAGE_asterisk-func-pitchshift is not set
+# CONFIG_PACKAGE_asterisk-func-presencestate is not set
+# CONFIG_PACKAGE_asterisk-func-rand is not set
+# CONFIG_PACKAGE_asterisk-func-realtime is not set
+# CONFIG_PACKAGE_asterisk-func-sayfiles is not set
+# CONFIG_PACKAGE_asterisk-func-scramble is not set
+# CONFIG_PACKAGE_asterisk-func-sha1 is not set
+# CONFIG_PACKAGE_asterisk-func-shell is not set
+# CONFIG_PACKAGE_asterisk-func-sorcery is not set
+# CONFIG_PACKAGE_asterisk-func-sprintf is not set
+# CONFIG_PACKAGE_asterisk-func-srv is not set
+# CONFIG_PACKAGE_asterisk-func-sysinfo is not set
+# CONFIG_PACKAGE_asterisk-func-talkdetect is not set
+# CONFIG_PACKAGE_asterisk-func-uri is not set
+# CONFIG_PACKAGE_asterisk-func-version is not set
+# CONFIG_PACKAGE_asterisk-func-vmcount is not set
+# CONFIG_PACKAGE_asterisk-func-volume is not set
+# CONFIG_PACKAGE_asterisk-odbc is not set
+# CONFIG_PACKAGE_asterisk-pbx-ael is not set
+# CONFIG_PACKAGE_asterisk-pbx-dundi is not set
+# CONFIG_PACKAGE_asterisk-pbx-loopback is not set
+# CONFIG_PACKAGE_asterisk-pbx-lua is not set
+# CONFIG_PACKAGE_asterisk-pbx-realtime is not set
+# CONFIG_PACKAGE_asterisk-pbx-spool is not set
+# CONFIG_PACKAGE_asterisk-pgsql is not set
+CONFIG_PACKAGE_asterisk-pjsip=y
+# CONFIG_PACKAGE_asterisk-res-adsi is not set
+# CONFIG_PACKAGE_asterisk-res-aeap is not set
+# CONFIG_PACKAGE_asterisk-res-ael-share is not set
+# CONFIG_PACKAGE_asterisk-res-agi is not set
+# CONFIG_PACKAGE_asterisk-res-ari is not set
+# CONFIG_PACKAGE_asterisk-res-ari-applications is not set
+# CONFIG_PACKAGE_asterisk-res-ari-asterisk is not set
+# CONFIG_PACKAGE_asterisk-res-ari-bridges is not set
+# CONFIG_PACKAGE_asterisk-res-ari-channels is not set
+# CONFIG_PACKAGE_asterisk-res-ari-device-states is not set
+# CONFIG_PACKAGE_asterisk-res-ari-endpoints is not set
+# CONFIG_PACKAGE_asterisk-res-ari-events is not set
+# CONFIG_PACKAGE_asterisk-res-ari-mailboxes is not set
+# CONFIG_PACKAGE_asterisk-res-ari-model is not set
+# CONFIG_PACKAGE_asterisk-res-ari-playbacks is not set
+# CONFIG_PACKAGE_asterisk-res-ari-recordings is not set
+# CONFIG_PACKAGE_asterisk-res-ari-sounds is not set
+# CONFIG_PACKAGE_asterisk-res-audiosocket is not set
+# CONFIG_PACKAGE_asterisk-res-calendar is not set
+# CONFIG_PACKAGE_asterisk-res-calendar-caldav is not set
+# CONFIG_PACKAGE_asterisk-res-calendar-ews is not set
+# CONFIG_PACKAGE_asterisk-res-calendar-exchange is not set
+# CONFIG_PACKAGE_asterisk-res-calendar-icalendar is not set
+# CONFIG_PACKAGE_asterisk-res-chan-stats is not set
+# CONFIG_PACKAGE_asterisk-res-clialiases is not set
+# CONFIG_PACKAGE_asterisk-res-cliexec is not set
+# CONFIG_PACKAGE_asterisk-res-clioriginate is not set
+# CONFIG_PACKAGE_asterisk-res-config-ldap is not set
+# CONFIG_PACKAGE_asterisk-res-config-mysql is not set
+# CONFIG_PACKAGE_asterisk-res-config-sqlite3 is not set
+# CONFIG_PACKAGE_asterisk-res-convert is not set
+# CONFIG_PACKAGE_asterisk-res-endpoint-stats is not set
+# CONFIG_PACKAGE_asterisk-res-fax is not set
+# CONFIG_PACKAGE_asterisk-res-fax-spandsp is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-celt is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-g729 is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-h263 is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-h264 is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-ilbc is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-opus is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-silk is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-siren14 is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-siren7 is not set
+# CONFIG_PACKAGE_asterisk-res-format-attr-vp8 is not set
+# CONFIG_PACKAGE_asterisk-res-hep is not set
+# CONFIG_PACKAGE_asterisk-res-hep-pjsip is not set
+# CONFIG_PACKAGE_asterisk-res-hep-rtcp is not set
+# CONFIG_PACKAGE_asterisk-res-http-media-cache is not set
+CONFIG_PACKAGE_asterisk-res-http-websocket=y
+# CONFIG_PACKAGE_asterisk-res-limit is not set
+# CONFIG_PACKAGE_asterisk-res-manager-devicestate is not set
+# CONFIG_PACKAGE_asterisk-res-manager-presencestate is not set
+# CONFIG_PACKAGE_asterisk-res-monitor is not set
+# CONFIG_PACKAGE_asterisk-res-musiconhold is not set
+# CONFIG_PACKAGE_asterisk-res-mutestream is not set
+# CONFIG_PACKAGE_asterisk-res-mwi-devstate is not set
+# CONFIG_PACKAGE_asterisk-res-mwi-external is not set
+# CONFIG_PACKAGE_asterisk-res-mwi-external-ami is not set
+# CONFIG_PACKAGE_asterisk-res-parking is not set
+# CONFIG_PACKAGE_asterisk-res-phoneprov is not set
+CONFIG_PACKAGE_asterisk-res-pjproject=y
+# CONFIG_PACKAGE_asterisk-res-pjsip-aoc is not set
+# CONFIG_PACKAGE_asterisk-res-pjsip-phoneprov is not set
+# CONFIG_PACKAGE_asterisk-res-pjsip-rfc3329 is not set
+# CONFIG_PACKAGE_asterisk-res-pjsip-stir-shaken is not set
+# CONFIG_PACKAGE_asterisk-res-pktccops is not set
+# CONFIG_PACKAGE_asterisk-res-prometheus is not set
+# CONFIG_PACKAGE_asterisk-res-realtime is not set
+# CONFIG_PACKAGE_asterisk-res-remb-modifier is not set
+# CONFIG_PACKAGE_asterisk-res-resolver-unbound is not set
+# CONFIG_PACKAGE_asterisk-res-rtp-asterisk is not set
+# CONFIG_PACKAGE_asterisk-res-rtp-multicast is not set
+CONFIG_PACKAGE_asterisk-res-security-log=y
+# CONFIG_PACKAGE_asterisk-res-smdi is not set
+# CONFIG_PACKAGE_asterisk-res-snmp is not set
+CONFIG_PACKAGE_asterisk-res-sorcery=y
+# CONFIG_PACKAGE_asterisk-res-sorcery-memory-cache is not set
+# CONFIG_PACKAGE_asterisk-res-speech is not set
+# CONFIG_PACKAGE_asterisk-res-speech-aeap is not set
+# CONFIG_PACKAGE_asterisk-res-srtp is not set
+# CONFIG_PACKAGE_asterisk-res-stasis is not set
+# CONFIG_PACKAGE_asterisk-res-stasis-answer is not set
+# CONFIG_PACKAGE_asterisk-res-stasis-device-state is not set
+# CONFIG_PACKAGE_asterisk-res-stasis-mailbox is not set
+# CONFIG_PACKAGE_asterisk-res-stasis-playback is not set
+# CONFIG_PACKAGE_asterisk-res-stasis-recording is not set
+# CONFIG_PACKAGE_asterisk-res-stasis-snoop is not set
+# CONFIG_PACKAGE_asterisk-res-statsd is not set
+# CONFIG_PACKAGE_asterisk-res-stir-shaken is not set
+# CONFIG_PACKAGE_asterisk-res-stun-monitor is not set
+# CONFIG_PACKAGE_asterisk-res-timing-dahdi is not set
+# CONFIG_PACKAGE_asterisk-res-timing-pthread is not set
+# CONFIG_PACKAGE_asterisk-res-tonedetect is not set
+# CONFIG_PACKAGE_asterisk-res-xmpp is not set
+# CONFIG_PACKAGE_asterisk-sounds is not set
+# CONFIG_PACKAGE_asterisk-util-aelparse is not set
+# CONFIG_PACKAGE_asterisk-util-astcanary is not set
+# CONFIG_PACKAGE_asterisk-util-astdb2bdb is not set
+# CONFIG_PACKAGE_asterisk-util-astdb2sqlite3 is not set
+# CONFIG_PACKAGE_asterisk-util-check-expr is not set
+# CONFIG_PACKAGE_asterisk-util-check-expr2 is not set
+CONFIG_PACKAGE_asterisk-util-smsq=y
+# CONFIG_PACKAGE_asterisk-util-stereorize is not set
+# CONFIG_PACKAGE_asterisk-util-streamplayer is not set
 # CONFIG_PACKAGE_baresip is not set
 # CONFIG_PACKAGE_baresip-app-auloop is not set
 # CONFIG_PACKAGE_baresip-app-autotest is not set
@@ -6040,7 +6370,7 @@ CONFIG_PACKAGE_tc-tiny=m
 # CONFIG_PACKAGE_htpdate is not set
 # CONFIG_PACKAGE_linuxptp is not set
 # CONFIG_PACKAGE_ntp-keygen is not set
-# CONFIG_PACKAGE_ntp-utils is not set
+CONFIG_PACKAGE_ntp-utils=y
 # CONFIG_PACKAGE_ntpd is not set
 # CONFIG_PACKAGE_ntpdate is not set
 # end of Time Synchronization
@@ -6269,7 +6599,7 @@ CONFIG_PACKAGE_wpad-basic-mbedtls=y
 # CONFIG_PACKAGE_atlas-sw-probe is not set
 # CONFIG_PACKAGE_atlas-sw-probe-rpc is not set
 # CONFIG_PACKAGE_banip is not set
-CONFIG_PACKAGE_batctl-default=m
+# CONFIG_PACKAGE_batctl-default is not set
 # CONFIG_PACKAGE_batctl-full is not set
 # CONFIG_PACKAGE_batctl-tiny is not set
 # CONFIG_PACKAGE_beanstalkd is not set
@@ -6307,6 +6637,7 @@ CONFIG_PACKAGE_chat=y
 # CONFIG_PACKAGE_fakepop is not set
 # CONFIG_PACKAGE_foolsm is not set
 # CONFIG_PACKAGE_fping is not set
+# CONFIG_PACKAGE_fsh is not set
 # CONFIG_PACKAGE_generate-ipv6-address is not set
 # CONFIG_PACKAGE_gensio-bin is not set
 # CONFIG_PACKAGE_geoip-shell is not set
@@ -6406,17 +6737,9 @@ CONFIG_PACKAGE_netcat=y
 # CONFIG_PACKAGE_nqptp is not set
 # CONFIG_PACKAGE_nut is not set
 # CONFIG_PACKAGE_obfs4proxy is not set
-CONFIG_PACKAGE_odhcp6c=y
-CONFIG_PACKAGE_odhcp6c_ext_cer_id=0
+# CONFIG_PACKAGE_odhcp6c is not set
 # CONFIG_PACKAGE_odhcpd is not set
-CONFIG_PACKAGE_odhcpd-ipv6only=y
-
-#
-# Configuration
-#
-CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
-# end of Configuration
-
+# CONFIG_PACKAGE_odhcpd-ipv6only is not set
 # CONFIG_PACKAGE_ola is not set
 # CONFIG_PACKAGE_omcproxy is not set
 # CONFIG_PACKAGE_oor is not set
@@ -6817,9 +7140,10 @@ CONFIG_PACKAGE_nfs-utils-libs=y
 #
 # Telephony
 #
+CONFIG_PACKAGE_asterisk-chan-quectel=y
 # CONFIG_PACKAGE_dahdi-cfg is not set
 # CONFIG_PACKAGE_dahdi-monitor is not set
-# CONFIG_PACKAGE_gsm-utils is not set
+CONFIG_PACKAGE_gsm-utils=y
 # CONFIG_PACKAGE_sipgrep is not set
 # CONFIG_PACKAGE_sngrep is not set
 # end of Telephony
@@ -6978,6 +7302,7 @@ CONFIG_PACKAGE_nfs-utils-libs=y
 # CONFIG_PACKAGE_checksec is not set
 # CONFIG_PACKAGE_checksec_automator is not set
 # CONFIG_PACKAGE_chkcon is not set
+# CONFIG_PACKAGE_cligen is not set
 # CONFIG_PACKAGE_clocate is not set
 # CONFIG_PACKAGE_cmdpad is not set
 # CONFIG_PACKAGE_cni is not set
@@ -6990,6 +7315,7 @@ CONFIG_PACKAGE_nfs-utils-libs=y
 # CONFIG_PACKAGE_containerd is not set
 # CONFIG_PACKAGE_coremark is not set
 # CONFIG_PACKAGE_coreutils is not set
+# CONFIG_PACKAGE_cpupower is not set
 # CONFIG_PACKAGE_cpusage is not set
 # CONFIG_PACKAGE_crconf is not set
 # CONFIG_PACKAGE_crelay is not set
@@ -7064,7 +7390,7 @@ CONFIG_PACKAGE_gpiod-tools=y
 # CONFIG_PACKAGE_hwclock is not set
 # CONFIG_PACKAGE_hwinfo is not set
 # CONFIG_PACKAGE_hwloc-utils is not set
-# CONFIG_PACKAGE_i2c-tools is not set
+CONFIG_PACKAGE_i2c-tools=y
 # CONFIG_PACKAGE_i2csfp is not set
 # CONFIG_PACKAGE_iconv is not set
 # CONFIG_PACKAGE_iio-utils is not set
@@ -7116,7 +7442,7 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_mhz is not set
 # CONFIG_PACKAGE_micrond is not set
 # CONFIG_PACKAGE_miniflux is not set
-# CONFIG_PACKAGE_mmc-utils is not set
+CONFIG_PACKAGE_mmc-utils=y
 # CONFIG_PACKAGE_more is not set
 # CONFIG_PACKAGE_moreutils is not set
 # CONFIG_PACKAGE_mount-utils is not set
@@ -7180,9 +7506,9 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_pservice is not set
 # CONFIG_PACKAGE_psmisc is not set
 # CONFIG_PACKAGE_pv is not set
-# CONFIG_PACKAGE_qmi-utils is not set
+CONFIG_PACKAGE_qmi-utils=y
 # CONFIG_PACKAGE_qrencode is not set
-# CONFIG_PACKAGE_quectel-timesync is not set
+CONFIG_PACKAGE_quectel-timesync=y
 # CONFIG_PACKAGE_quota is not set
 # CONFIG_PACKAGE_ravpower-mcu is not set
 # CONFIG_PACKAGE_readsb is not set
@@ -7220,7 +7546,7 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_setools-seinfo is not set
 # CONFIG_PACKAGE_setools-seinfoflow is not set
 # CONFIG_PACKAGE_setools-sesearch is not set
-# CONFIG_PACKAGE_setserial is not set
+CONFIG_PACKAGE_setserial=y
 # CONFIG_PACKAGE_sexpect is not set
 # CONFIG_PACKAGE_shadow-utils is not set
 # CONFIG_PACKAGE_shared-mime-info is not set
@@ -7234,7 +7560,7 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_sms-tool is not set
 # CONFIG_PACKAGE_smstools3 is not set
 # CONFIG_PACKAGE_sockread is not set
-# CONFIG_PACKAGE_spi-tools is not set
+CONFIG_PACKAGE_spi-tools=y
 # CONFIG_PACKAGE_spidev-test is not set
 # CONFIG_PACKAGE_ssdeep is not set
 # CONFIG_PACKAGE_sshpass is not set
@@ -7284,7 +7610,7 @@ CONFIG_STRACE_NONE=y
 # CONFIG_PACKAGE_uledd is not set
 # CONFIG_PACKAGE_unix2dos is not set
 # CONFIG_PACKAGE_unshare is not set
-# CONFIG_PACKAGE_usb-modeswitch is not set
+CONFIG_PACKAGE_usb-modeswitch=y
 CONFIG_PACKAGE_usbids=y
 CONFIG_PACKAGE_usbutils=y
 # CONFIG_PACKAGE_uuidd is not set

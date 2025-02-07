@@ -16,6 +16,16 @@
 		led-upgrade = &led_wlan;
 	};
 
+	 gpio-export {
+                compatible = "gpio-export";
+                #size-cells = <0>;
+                lte_sw {
+                        gpio-export,name = "lte_sw";
+                        gpio-export,direction_may_change = <1>;
+                        gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
+                };
+	};
+
 	keys {
 		compatible = "gpio-keys";
 
@@ -135,7 +145,25 @@
 	nvmem-cell-names = "eeprom";
 };
 
+&pinctrl {
+	ephy-digital;
+
+	sdxc_iot_mode: sdxc_iot_mode {
+		esd {
+			groups = "esd";
+			function = "iot";
+		};
+
+		sdxc {
+			groups = "sdmode";
+			function = "sdxc";
+		};
+	};
+};
+
 
 &sdhci {
-        status = "okay";
+		status = "okay";
+		pinctrl-0 = <&sdxc_iot_mode>;
+		pinctrl-1 = <&sdxc_iot_mode>;
 };

@@ -6,3 +6,4 @@
 *.lst
 *.map
 .gdb_history
+pmic/tool/bin/*
