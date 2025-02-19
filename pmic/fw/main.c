@@ -16,14 +16,15 @@
 
 #define I2C_DEV_ADDR 9
 
-#define I2C_REG_TM 4
-#define I2C_REG_LED_R 8
-#define I2C_REG_LED_G 9
-#define I2C_REG_LED_B 10
-#define I2C_REG_LED_UPD 11
-#define I2C_REG_ADC 12
+#define I2C_REG_TM        4
+#define I2C_REG_LED_R     8
+#define I2C_REG_LED_G     9
+#define I2C_REG_LED_B    10
+#define I2C_REG_LED_UPD  11
+#define I2C_REG_ADC      12
 #define I2C_REG_IN_STATE 14
-#define I2C_REG_OFF 31
+#define I2C_REG_UID      16
+#define I2C_REG_OFF      31
 
 typedef struct in_state
 {
@@ -109,9 +110,9 @@ int main()
     i2c_registers[I2C_REG_LED_R] = 0xff;
     i2c_registers[I2C_REG_LED_G] = 0xff;
     i2c_registers[I2C_REG_LED_B] = 0xff;
-    i2c_registers[I2C_REG_LED_UPD] = 1;
     WS2812BDMAStart(1);
 
+    memcpy(&i2c_registers[I2C_REG_UID], (uint8_t*) &ESIG->UID0, sizeof(uint32_t) * 3);
     Delay_Ms(1000);
     GPIOD->OUTDR |= (1 << ENA_PIN); // Turn on dev
 
@@ -125,8 +126,16 @@ int main()
     adc_init();
 
     uint32_t *tm_reg = (uint32_t *)&i2c_registers[I2C_REG_TM];
-    while ((GPIOD->INDR & (1 << BTN_PIN)) == 0)
-        ;
+    while ((GPIOD->INDR & (1 << BTN_PIN)) == 0) {
+        if ((*tm_reg % ADC_MEAS_INT) >= 1000) {
+            i2c_registers[I2C_REG_LED_R] = 0x40;
+            i2c_registers[I2C_REG_LED_G] = 0x00;
+            i2c_registers[I2C_REG_LED_B] = 0x40;
+            WS2812BDMAStart(1);
+        }
+        Delay_Ms(50);
+        (*tm_reg) += 50;
+    }
 
     memset(i2c_registers, 0, sizeof(i2c_registers));
     i2c_registers[I2C_REG_LED_R] = 0x30;
@@ -135,7 +144,6 @@ int main()
     i2c_registers[I2C_REG_LED_UPD] = 1;
     printf("Started! \r\n");
     uint8_t low_voltage_counter = BAT_LOW_SH_TIME;
-    uint16_t btn_led_counter = 0;
 
     while (1) {
         in_state_t *in_state = (in_state_t *)&i2c_registers[I2C_REG_IN_STATE];
@@ -168,22 +176,6 @@ int main()
         in_state->stdby = (GPIOD->INDR & (1 << TP4056_STDBY_PIN)) > 0;
         in_state->lte = (GPIOA->INDR & (1 << LTE_LED_PIN)) > 0;
         in_state->pwr = (GPIOD->INDR & (1 << BTN_PIN)) > 0;
-
-        if ((GPIOD->INDR & (1 << BTN_PIN)) == 0) {
-            btn_led_counter = BTN_LED_COUNTER;
-            i2c_registers[I2C_REG_LED_R] = 0xff;
-            i2c_registers[I2C_REG_LED_G] = 0xff;
-            i2c_registers[I2C_REG_LED_B] = 0xff;
-            i2c_registers[I2C_REG_LED_UPD] = 1;
-        } else if (btn_led_counter > 1) {
-            btn_led_counter -= 1;
-        } else if (btn_led_counter == 1) {
-            i2c_registers[I2C_REG_LED_R] = 0x30;
-            i2c_registers[I2C_REG_LED_G] = 0x20;
-            i2c_registers[I2C_REG_LED_B] = 0x10;
-            i2c_registers[I2C_REG_LED_UPD] = 1;
-            btn_led_counter = 0;
-        }
 
         (*tm_reg) += 1;
     }

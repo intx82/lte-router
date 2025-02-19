@@ -56,7 +56,7 @@ LIB_DIRS =
 
 # libraries (additional libraries for linking, e.g. "-lm -lsome_name" to link
 # math library libm.a and libsome_name.a)
-LIBS =
+LIBS = -lubox -lubus -ljson-c -lblobmsg_json
 
 # additional directories with source files (absolute or relative paths to
 # folders with source files, current folder is always included)

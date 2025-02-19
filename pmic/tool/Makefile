@@ -16,7 +16,7 @@ define Package/pmicctrl
   SECTION:=utils
   CATEGORY:=Base system
   TITLE:=PMIC Control utillity
-  DEPENDS:=+libstdcpp
+  DEPENDS:=+libstdcpp +libubus +libubox +libjson-c +libblobmsg-json +libuci
 endef
 
 define Package/pmicctrl/description
@@ -36,6 +36,8 @@ endef
 define Package/pmicctrl/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/pmicctrl.elf $(1)/usr/bin/pmicctrl
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/pmic.daemon $(1)/etc/init.d/pmic.daemon
 endef
 
 $(eval $(call BuildPackage,pmicctrl))

@@ -1,0 +1,61 @@
+#!/bin/sh /etc/rc.common
+#
+# pmic.daemon - shutdown script for powering off the main board
+#
+# This script is executed during system shutdown. Its stop() function calls
+# the command `pmicctrl shutdown` to power off the main board.
+#
+
+START=30
+STOP=98
+last_charge="0"
+
+start() {
+    logger -t pmic.daemon "Starting PMIC daemon"
+    /usr/bin/pmicctrl daemon &
+    sleep 5
+    ubus call pmic set_led '{"r":0, "g":48, "b":16}'
+    
+    # Start a background listener that waits for a ubus event with pmic.action=="poweroff"
+    (
+      logger -t pmic.daemon "Starting ubus event listener for poweroff"
+      ubus listen | while IFS= read -r line; do
+       # Use jq to extract the action from the "pmic" object
+        action=$(echo "$line" | jq -r '.pmic.action // empty')
+        charge=$(echo "$line" | jq -r '.pmic.charge // empty')
+        power=$(echo "$line" | jq -r '.pmic.power // empty')
+
+        if [ "$action" = "poweroff" ]; then
+            ubus call pmic set_led '{"r":48, "g":0, "b": 16}'
+            logger -t pmic.daemon "Received pmic.poweroff event, initiating poweroff"
+            poweroff
+            exit 0
+        fi
+
+        if [ "$charge" = "0" ]; then
+            ubus call pmic set_led '{"r":0, "g":16, "b":48}'
+            $last_charge="0"
+        elif [ "$charge" = "1" ]; then
+            ubus call pmic set_led '{"r":0, "g":48, "b":16}'
+            $last_charge="1"
+        fi
+
+        if [ "$power" = "1" ]; then
+            ubus call pmic set_led '{"r":128, "g":128, "b":128}'
+        elif [ "$power" = "0" ]; then
+            if [ "$last_charge" = "0" ]; then
+                ubus call pmic set_led '{"r":0, "g":16, "b":48}'
+            elif [ "$last_charge" = "1" ]; then
+                ubus call pmic set_led '{"r":0, "g":48, "b":16}'
+            fi
+        fi
+      done
+    ) &
+}
+
+stop() {
+    logger -t pmic.daemon "System shutting down, executing: pmicctrl shutdown"
+    ubus call pmic set_led '{"r":0, "g":0, "b": 0}'
+    sleep 1
+    ubus call pmic shutdown
+}
