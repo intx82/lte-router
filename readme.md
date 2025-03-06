@@ -198,3 +198,43 @@ This setup allows your router to function as a robust network-attached storage s
 
 use files located in `3d/stl`. To modify it, use 'Freecad'
 
+#### 3.1.2 PCB
+
+![Image](https://raw.githubusercontent.com/intx82/lte-router/master/img/pcb-top.png)
+
+Use altium project `pcb/lte-router_V2_ARCHIVE/lte-router_V2_DIV/lte-router_V2.PrjPcb`
+
+Schematic and PCB documentation available in PDF file here: `pcb/lte-router_V2_ARCHIVE/lte-router_V2_GENERATED/DOC/lte-router_V2_DOC.PDF`
+
+In near future will need to fix:
+
+**PCB V2->V3**
+
+- [ ] Ethernet led connect to VCC instead of GND
+- [ ] Connect modem thru the diode to the VBAT (after Mosfet)
+- [ ] Change bc847 to bss138 and add to the Gate-GND resistor 100k (or change it together to the AP2003 double mosfet)
+- [ ] separate resistors to CC1 / CC2  (for each pin own - 5.1k)
+
+
+**Additional thanks to Michael who done this work**
+
+
+### 3.2 Software
+
+#### 3.2.1 Power Managment IC (pmic) firmware
+
+For `PMIC` has been used 'CH32V003F4P6' Risc-V CPU
+
+To build it, be sure that you have installed `riscv64-gnu-linux-gcc` and just run `make -C pmic/fw`.
+
+#### 3.2.2 Openwrt 
+
+- Use official 'Openwrt' repository and checkout to the '09e32bf62a7dc0f252605720910b02ed26994263' commit, follow the openwrt build instructions
+- Then put `openwrt/config` file to the openwrt folder as .config
+- After copy contents of `pmic/tool` to the `package/utils/pmicctrl/`
+- Apply all patches from `openwrt` folder
+- `make`
+- Take a firmware from `bin/targets/ramips/mt76x8` 
+- Upload it to the device using `scp` - `scp openwrt-snapshot-r28739+2-69890e16b3-ramips-mt76x8-hilink_hlk-7688a-squashfs-sysupgrade.bin root@192.168.1.1:/tmp` or if this is stock HLK-7688 - `scp openwrt-snapshot-r28466-6881b48dc6-ramips-mt76x8-hilink_hlk-7688a-squashfs-sysupgrade.bin root@192.168.16.254:/tmp`. Password to stock module Wi-Fi is '12345678'
+- Flash it with `sysupgrade -n /tmp/openwrt-snapshot-r28739+2-69890e16b3-ramips-mt76x8-hilink_hlk-7688a-squashfs-sysupgrade.bin`
+
