@@ -205,6 +205,7 @@ static void vbat_poll_cb(struct uloop_timeout *t)
     }
 
     low_bat_hnd();
+    current_state.charge = 0; // to proceed change color on power-on
     uloop_timeout_set(t, VBAT_POLL_INTERVAL);
 }
 

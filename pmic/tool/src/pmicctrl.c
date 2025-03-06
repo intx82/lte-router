@@ -119,7 +119,7 @@ int read_registers_json(struct I2cDevice *dev)
 
 int set_led_color(struct I2cDevice *dev, uint8_t r, uint8_t g, uint8_t b)
 {
-    uint8_t data[4] = {r, g, b, 0x01};
+    uint8_t data[4] = {g, r, b, 0x01};
     int rc = i2c_writen_reg(dev, 8, data, 4);
     if (rc < 0) {
         fprintf(stderr, "Failed to write LED color\n");

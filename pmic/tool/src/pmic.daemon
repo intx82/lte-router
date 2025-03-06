@@ -14,7 +14,7 @@ start() {
     logger -t pmic.daemon "Starting PMIC daemon"
     /usr/bin/pmicctrl daemon &
     sleep 5
-    ubus call pmic set_led '{"r":0, "g":48, "b":16}'
+    ubus call pmic set_led '{"r":0, "g":16, "b":48}'
     
     # Start a background listener that waits for a ubus event with pmic.action=="poweroff"
     (

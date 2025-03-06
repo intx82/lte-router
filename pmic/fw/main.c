@@ -112,7 +112,6 @@ int main()
     i2c_registers[I2C_REG_LED_B] = 0xff;
     WS2812BDMAStart(1);
 
-    memcpy(&i2c_registers[I2C_REG_UID], (uint8_t*) &ESIG->UID0, sizeof(uint32_t) * 3);
     Delay_Ms(1000);
     GPIOD->OUTDR |= (1 << ENA_PIN); // Turn on dev
 
@@ -138,6 +137,7 @@ int main()
     }
 
     memset(i2c_registers, 0, sizeof(i2c_registers));
+    memcpy(&i2c_registers[I2C_REG_UID], (uint8_t*) &ESIG->UID0, sizeof(uint32_t) * 3);
     i2c_registers[I2C_REG_LED_R] = 0x30;
     i2c_registers[I2C_REG_LED_G] = 0x20;
     i2c_registers[I2C_REG_LED_B] = 0x10;
