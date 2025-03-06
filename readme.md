@@ -11,6 +11,159 @@ The DIY LTE router supports multiple functionalities tailored to diverse applica
 ![Image](https://raw.githubusercontent.com/intx82/lte-router/master/img/inside.jpg)
 
 ## 2. Use cases
+
+### 2.1 LTE Voice Calls and SMS Termination via VOIP
+
+The DIY LTE router integrates seamlessly with LTE modems (e.g., Quectel EC25) using the Asterisk VoIP server to enable voice calls and SMS functionality. Calls and SMS messages can be managed using SIP clients (e.g., Zoiper) directly over an IP network.
+
+#### Voice Calls
+
+- **Outgoing Calls:**
+    
+    - Calls initiated from the SIP client are routed through the LTE modem. The call handling logic is provided in `openwrt/extensions.conf` under the `[zoiper_in]` context.
+        
+    - Example:
+        
+        ```
+        exten => _X.,1,NoOp("Outgoing call from Zoiper to EC25")
+        same => n,Dial(Quectel/ec25_modem/${EXTEN},60)
+        same => n,Hangup()
+        ```
+        
+- **Incoming Calls:**
+    
+    - Calls received by the LTE modem are routed to the configured SIP client.
+        
+    - Defined in `openwrt/quectel.conf` under `[ec25_modem]` and routed through context `[from-ec25]`:
+        
+        ```
+        exten => s,1,NoOp("Incoming call from EC25")
+        same => n,Dial(PJSIP/200)
+        same => n,Hangup()
+        ```
+        
+
+#### SMS Handling
+
+- **Outgoing SMS:**
+    
+    - SMS messages can be sent directly from the SIP client using SIP MESSAGE requests.
+        
+    - Defined under context `[outgoing-sms]`:
+        
+        ```
+        exten => _X!,1,NoOp(Outgoing SIP MESSAGE to send as SMS)
+        same => n,QuectelSendSMS(ec25_modem,${EXTEN},${MESSAGE(body)},1440,no,"magicID")
+        same => n,Hangup()
+        ```
+        
+- **Incoming SMS:**
+    
+    - Incoming SMS messages received by the LTE modem are forwarded to the SIP client.
+        
+    - Managed under `[from-ec25]`:
+        
+        ```
+        exten => sms,1,NoOp(Inbound SMS Received)
+        same => n,Set(MESSAGE(body)=${SMS})
+        same => n,MessageSend(pjsip:200/200,${CALLERID(num)})
+        same => n,HangUp()
+        ```
+        
+
+#### Configuration and Permissions
+
+- Configuration files (`extensions.conf`, `PJSIP.conf`, `quectel.conf`, and `modules.conf`) are available in the project's `openwrt` folder.
+    
+- A SIP client (e.g., Zoiper) should connect to the endpoint defined in `openwrt/PJSIP.conf`.
+    
+- Basic Asterisk configuration (`/etc/config/asterisk`):
+    
+
+```conf
+config asterisk 'general'  
+       option enabled '1'  
+       option log_stderr '1'  
+       option log_stdout '0'  
+       option options ''
+```
+
+- **Permissions Issues:** 
+
+If there are permission errors accessing `ttyUSB` ports, modify `/etc/init.d/asterisk` as follows: (remove flag -U from command)
+
+
+```bash
+#!/bin/sh /etc/rc.common  
+# Copyright (C) 2014 OpenWrt.org  
+  
+START=99  
+  
+USE_PROCD=1  
+  
+#PROCD_DEBUG=1  
+  
+NAME=asterisk  
+COMMAND=/usr/sbin/$NAME  
+  
+LOGGER="/usr/bin/logger -p daemon.err -s -t $NAME --"  
+  
+start_service() {  
+  
+ dbdir=/var/lib/asterisk/astdb  
+ logdir=/var/log/asterisk  
+ cdrcsvdir=$logdir/cdr-csv  
+ rundir=/var/run/asterisk  
+ spooldir=/var/spool/asterisk  
+ varlibdir=/var/lib/asterisk  
+  
+ config_load $NAME  
+  
+ config_get_bool enabled general enabled 0  
+ if [ $enabled -eq 0 ]; then  
+   $LOGGER service not enabled in /etc/config/$NAME  
+   return 1  
+ fi  
+  
+ config_get_bool log_stderr general log_stderr 1  
+ config_get_bool log_stdout general log_stdout 0  
+  
+ config_get options general options  
+  
+ for i in \  
+   "$logdir" \  
+   "$cdrcsvdir" \  
+   "$rundir" \  
+   "$spooldir" \  
+   "$varlibdir" \  
+   "$dbdir"  
+ do  
+   if ! [ -e "$i" ]; then  
+     mkdir -m 0750 -p "$i"  
+     [ -d "$i" ] && chown $NAME:$NAME "$i"  
+   fi  
+ done  
+  
+ procd_open_instance  
+ procd_set_param command $COMMAND  
+ procd_append_param command \  
+   $options \  
+   -f  
+ # forward stderr to logd  
+ procd_set_param stderr $log_stderr  
+ # same for stdout  
+ procd_set_param stdout $log_stdout  
+ procd_close_instance  
+  
+}  
+  
+reload_service() {  
+ procd_send_signal $NAME  
+}
+```
+
+Configuration files (`extensions.conf`, `PJSIP.conf`, `quectel.conf`, `modules.conf`) are located in the project's `openwrt` folder and should copied to the `/etc/asterisk` folder on the device. 
+
 ### 2.2 Secured VPN Gateway
 
 The DIY LTE router supports secure VPN connections using WireGuard and OpenVPN, configured via OpenWrt's command-line interface (CLI). These VPN configurations provide secure, encrypted tunnels for safe internet browsing and remote network access.

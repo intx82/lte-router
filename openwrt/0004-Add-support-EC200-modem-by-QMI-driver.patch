@@ -1,0 +1,30 @@
+From 9e88a05e64a81f1630c7220a602c4f6660a9493f Mon Sep 17 00:00:00 2001
+From: Danil Ruban <intx82@gmail.com>
+Date: Thu, 6 Mar 2025 15:44:46 +0100
+Subject: [PATCH 4/4] Add support EC200 modem by QMI driver
+
+Signed-off-by: Danil Ruban <intx82@gmail.com>
+---
+ .../ramips/patches-6.6/861-qmi-wwan-ec200-driver.patch | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 target/linux/ramips/patches-6.6/861-qmi-wwan-ec200-driver.patch
+
+diff --git a/target/linux/ramips/patches-6.6/861-qmi-wwan-ec200-driver.patch b/target/linux/ramips/patches-6.6/861-qmi-wwan-ec200-driver.patch
+new file mode 100644
+index 0000000000..5d7da3b3bf
+--- /dev/null
++++ b/target/linux/ramips/patches-6.6/861-qmi-wwan-ec200-driver.patch
+@@ -0,0 +1,10 @@
++--- a/drivers/net/usb/qmi_wwan.c
+++++ b/drivers/net/usb/qmi_wwan.c
++@@ -1083,6 +1083,7 @@
++ 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0620)},	/* Quectel EM160R-GL */
++ 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0800)},	/* Quectel RM500Q-GL */
++ 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0801)},	/* Quectel RM520N */
+++	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x6005)},	/* Quectel EC200 */
++ 
++ 	/* 3. Combined interface devices matching on interface number */
++ 	{QMI_FIXED_INTF(0x0408, 0xea42, 4)},	/* Yota / Megafon M100-1 */
+-- 
+2.30.2
+

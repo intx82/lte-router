@@ -1,0 +1,44 @@
+From a17dc02bf429abdf7da1c4596b9ace7674f2395d Mon Sep 17 00:00:00 2001
+From: Danil Ruban <intx82@gmail.com>
+Date: Thu, 6 Mar 2025 15:44:17 +0100
+Subject: [PATCH 3/4] fix microsd-card issue for hlk-7688
+
+Signed-off-by: Danil Ruban <intx82@gmail.com>
+---
+ .../ramips/dts/mt7628an_hilink_hlk-7688a.dts  | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts b/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts
+index 0cfbeb635b..dceadb6e4f 100644
+--- a/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts
++++ b/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts
+@@ -145,7 +145,26 @@
+ 	nvmem-cell-names = "eeprom";
+ };
+ 
++&pinctrl {
++	ephy-digital;
++
++	sdxc_iot_mode: sdxc_iot_mode {
++		esd {
++			groups = "esd";
++			function = "iot";
++		};
++
++		sdxc {
++			groups = "sdmode";
++			function = "sdxc";
++		};
++	};
++};
++
+ 
+ &sdhci {
+         status = "okay";
++
++	pinctrl-0 = <&sdxc_iot_mode>;
++	pinctrl-1 = <&sdxc_iot_mode>;
+ };
+-- 
+2.30.2
+

@@ -1,0 +1,42 @@
+From 09e32bf62a7dc0f252605720910b02ed26994263 Mon Sep 17 00:00:00 2001
+From: Danil Ruban <intx82@gmail.com>
+Date: Sat, 1 Feb 2025 23:44:35 +0100
+Subject: [PATCH 2/4] add gpio0 to ctrl lte
+
+Signed-off-by: Danil Ruban <intx82@gmail.com>
+---
+ target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts b/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts
+index 3c0596ae25..0cfbeb635b 100644
+--- a/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts
++++ b/target/linux/ramips/dts/mt7628an_hilink_hlk-7688a.dts
+@@ -16,6 +16,16 @@
+ 		led-upgrade = &led_wlan;
+ 	};
+ 
++	 gpio-export {
++                compatible = "gpio-export";
++                #size-cells = <0>;
++                lte_sw {
++                        gpio-export,name = "lte_sw";
++                        gpio-export,direction_may_change = <1>;
++                        gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
++                };
++	};
++
+ 	keys {
+ 		compatible = "gpio-keys";
+ 
+@@ -135,6 +145,7 @@
+ 	nvmem-cell-names = "eeprom";
+ };
+ 
++
+ &sdhci {
+         status = "okay";
+ };
+-- 
+2.30.2
+
