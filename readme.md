@@ -204,7 +204,7 @@ use files located in `3d/stl`. To modify it, use 'Freecad'
 
 Use altium project `pcb/lte-router_V2_ARCHIVE/lte-router_V2_DIV/lte-router_V2.PrjPcb`
 
-Schematic and PCB documentation available in PDF file here: `pcb/lte-router_V2_ARCHIVE/lte-router_V2_GENERATED/DOC/lte-router_V2_DOC.PDF`
+Schematic and PCB documentation available in PDF file here: [`pcb/lte-router_V2_ARCHIVE/lte-router_V2_GENERATED/DOC/lte-router_V2_DOC.PDF`](https://github.com/intx82/lte-router/blob/master/pcb/lte-router_V2_ARCHIVE/lte-router_V2_GENERATED/DOC/lte-router_V2_DOC.PDF)
 
 In near future will need to fix:
 
