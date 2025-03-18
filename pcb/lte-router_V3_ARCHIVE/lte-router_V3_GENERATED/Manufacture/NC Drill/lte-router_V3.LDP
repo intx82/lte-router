@@ -1,0 +1,4 @@
+Layer Pairs Export File for PCB: M:\ExclusiveDevices\All\4\DR\lte-router\SCHPCB\lte-router_V3\lte-router_V3.PcbDoc
+LayersSetName=Top_Bot_Plated_Thru_Holes|DrillFile=lte-router_v3-roundholes-plated.txt|DrillLayers=gtl,g1,g2,gbl
+LayersSetName=Top_Bot_Plated_Slot_Holes|DrillFile=lte-router_v3-slotholes-plated.txt|DrillLayers=gtl,g1,g2,gbl
+LayersSetName=Top_Bot_NonPlated_Thru_Holes|DrillFile=lte-router_v3-roundholes-nonplated.txt|DrillLayers=gtl,g1,g2,gbl

@@ -355,22 +355,11 @@ use files located in `3d/stl`. To modify it, use 'Freecad'
 
 ![Image](https://raw.githubusercontent.com/intx82/lte-router/master/img/pcb-top.png)
 
-Use altium project `pcb/lte-router_V2_ARCHIVE/lte-router_V2_DIV/lte-router_V2.PrjPcb`
+Use altium project `pcb/lte-router_V3_ARCHIVE/lte-router_V3_DIV/lte-router_V3.PrjPcb`
 
-Schematic and PCB documentation available in PDF file here: [`pcb/lte-router_V2_ARCHIVE/lte-router_V2_GENERATED/DOC/lte-router_V2_DOC.PDF`](https://github.com/intx82/lte-router/blob/master/pcb/lte-router_V2_ARCHIVE/lte-router_V2_GENERATED/DOC/lte-router_V2_DOC.PDF)
-
-In near future will need to fix:
-
-**PCB V2->V3**
-
-- [ ] Ethernet led connect to VCC instead of GND
-- [ ] Connect modem thru the diode to the VBAT (after Mosfet)
-- [ ] Change bc847 to bss138 and add to the Gate-GND resistor 100k (or change it together to the AP2003 double mosfet)
-- [ ] separate resistors to CC1 / CC2  (for each pin own - 5.1k)
-
+Schematic and PCB documentation available in PDF file here: [`pcb/lte-router_V3_ARCHIVE/lte-router_V3_GENERATED/DOC/lte-router_V3_DOC.PDF`](https://github.com/intx82/lte-router/blob/master/pcb/lte-router_V3_ARCHIVE/lte-router_V3_GENERATED/DOC/lte-router_V3_DOC.PDF)
 
 **Additional thanks to Michael who done this work**
-
 
 ### 3.2 Software
 
