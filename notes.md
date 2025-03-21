@@ -288,3 +288,80 @@ config wireguard_wg0
        option endpoint_port 'SRV-PORT'  
        option persistent_keepalive '25'
 ```
+
+
+
+# Internet over SLIP
+
+device:
+
+```plantuml
+device@10.42.0.2 -> host@10.42.0.1
+```
+
+Device sl0.up script:
+
+```bash
+#!/bin/sh  
+  
+stty -F /dev/ttyS0 -crtscts speed 230400  
+sleep 1  
+slattach -L /dev/ttyS0 &  
+sleep 1  
+ifconfig sl0 10.42.0.2 pointopoint 10.42.0.1 up  
+ifconfig sl0 mtu 1536 up  
+# route add default gw 10.42.0.1
+```
+
+Host sl0.up script:
+
+```bash
+#!/bin/bash  
+  
+stty -F /dev/ttyUSB0 speed 230400 -crtscts  
+slattach -L -d /dev/ttyUSB0  &  
+sleep 1  
+ifconfig sl0 10.42.0.1 pointtopoint 10.42.0.2 up  
+ifconfig sl0 mtu 1536 up  
+route add default gw 10.42.0.2  # Use this if you planned to share internet throught SLIP interface
+```
+
+Check files `host.sl0.up` `dev.sl0.up` in openwrt folder
+If you planned to share internet connection throught SLIP, then add exceptions to the firewall:
+
+`/etc/config/firewall`: ('+' - means added)
+```
+config zone  
+       option name             lan  
+       list   network          'lan'  
++       list   network          'slip'  
+       option input            ACCEPT  
+       option output           ACCEPT  
+       option forward          ACCEPT  
+  
+config zone  
+       option name             wan  
+       list   network          'wan'  
+       list   network          'wan6'  
++       list   network          'wwan'  
+       option input            REJECT  
+       option output           ACCEPT  
+       option forward          REJECT  
+       option masq             1  
+       option mtu_fix          1
+```
+
+`/etc/config/network`:
+
+```
+config device  
+       option name 'sl0'  
+  
+config interface 'slip'  
+       option device 'sl0'
+
+config interface 'wwan'  
+       option proto 'dhcp'  
+       option ifname 'eth1'
+```
+

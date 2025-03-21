@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ifconfig sl0 down
+pkill slattach

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+stty -F /dev/ttyUSB0 speed 230400 -crtscts
+slattach -L -d /dev/ttyUSB0  &
+sleep 1
+ifconfig sl0 10.42.0.1 pointtopoint 10.42.0.2 up
+ifconfig sl0 mtu 1536 up
+#route add default gw 10.42.0.1

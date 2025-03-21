@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ifconfig sl0 down
+kill $(pidof slattach)
+stty -F /dev/ttyS0 57600
+
