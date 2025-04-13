@@ -23,10 +23,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "daemon.h"
 #include "i2c.h"
 #include "version.hpp"
-#include "daemon.h"
-
 
 /* I2C bus and PMIC device definitions */
 #define I2C_BUS "/dev/i2c-0"
@@ -39,9 +38,7 @@ int read_registers_text(struct I2cDevice *dev);
 int read_registers_json(struct I2cDevice *dev);
 int shutdown_device(struct I2cDevice *dev);
 
-
 #define dbg() printf("%s:%d\r\n", __FILE__, __LINE__)
-
 
 /* --- Other functions (read, set-led, shutdown, etc.) --- */
 
@@ -72,17 +69,26 @@ int read_registers_text(struct I2cDevice *dev)
 
     uint32_t tm = (regs[7] << 24) | (regs[6] << 16) | (regs[5] << 8) | regs[4];
     uint16_t adc_val = (regs[13] << 8) | regs[12];
-    uint8_t in_state = regs[14];
+    pmic_state_t in_state = {.raw = regs[14]};
+
     float vbat = DIV_RATIO * (VREF * ((float)adc_val / ADC_MAX));
 
     printf("\nDecoded Fields:\n");
-    printf("  Time (ms): %u\n", tm);
-    printf("  LED Color: R=0x%02x, G=0x%02x, B=0x%02x (trigger=0x%02x)\n",
-           regs[8], regs[9], regs[10], regs[11]);
-    printf("  ADC Value: %u\n", adc_val);
-    printf("  Battery Voltage: %.3f V\n", vbat);
-    printf("  In-State : 0x%02x\n", in_state);
-
+    printf("  Time (ms)        : %u\n", tm);
+    printf("  LED Color        : R=0x%02x, G=0x%02x, B=0x%02x (trigger=0x%02x)\n", regs[8], regs[9], regs[10], regs[11]);
+    printf("  ADC Value        : %u\n", adc_val);
+    printf("  Battery Voltage  : %.3f V\n", vbat);
+    printf("  Serial number:   : ");
+    for (uint8_t i = 0; i < 12; i++) {
+        printf((i < 11 ? "%02x-" : "%02x"), regs[i + 16]);
+    }
+    printf("\n");
+    printf("  In-State         : 0x%02x\n", in_state.raw);
+    printf("    Charge         : %s\n", in_state.charge ? "False" : "True");
+    printf("    Stand-by       : %s\n", in_state.stdby ? "True" : "False");
+    printf("    LTE LED        : %s\n", in_state.lte ? "True" : "False");
+    printf("    PWR Button     : %s\n", in_state.pwr ? "Not pressed" : "Pressed");
+    printf("    Battery low    : %s\n", in_state.bat_low ? "True" : "False");
     return 0;
 }
 

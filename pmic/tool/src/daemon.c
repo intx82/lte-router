@@ -15,20 +15,6 @@ static struct I2cDevice *g_dev = NULL;
 int set_led_color(struct I2cDevice *dev, uint8_t r, uint8_t g, uint8_t b);
 int shutdown_device(struct I2cDevice *dev);
 
-typedef union
-{
-    uint8_t raw;
-    struct
-    {
-        uint8_t charge : 1;
-        uint8_t stdby : 1;
-        uint8_t lte : 1;
-        uint8_t pwr : 1;
-        uint8_t bat_low : 1;
-        uint8_t : 3;
-    };
-} pmic_state_t;
-
 /* --- LED Command Policy & Callback --- */
 enum
 {
@@ -188,24 +174,28 @@ static void standby_hnd(pmic_state_t *state)
 static void vbat_poll_cb(struct uloop_timeout *t)
 {
     static struct blob_buf b;
-    uint8_t regs[2];
-    int rc = i2c_readn_reg(g_dev, 12, regs, 2);
+    uint8_t regs[3];
+
+    int rc = i2c_readn_reg(g_dev, 12, regs, 3);
     if (rc <= 0) {
         fprintf(stderr, "Failed to read PMIC registers\n");
         return;
     }
 
     uint16_t adc_val = (regs[1] << 8) | regs[0];
+    pmic_state_t state = { .raw = regs[2] };
     float vbat = DIV_RATIO * (VREF * ((float)adc_val / ADC_MAX));
 
-    blob_buf_init(&b, 0);
-    blobmsg_add_float(&b, "battery", vbat);
-    if (pmicctrl_send_event("pmic", &b) != 0) {
-        fprintf(stderr, "pmicctrl_send_event failed\n");
-    }
+    if ((vbat > 3.0f) && (vbat < 5.0f)) {
+        blob_buf_init(&b, 0);
+        blobmsg_add_float(&b, "battery", vbat);
+        blobmsg_add_u32(&b, "charge", !state.charge);
+        if (pmicctrl_send_event("pmic", &b) != 0) {
+            fprintf(stderr, "pmicctrl_send_event failed\n");
+        }
 
-    low_bat_hnd();
-    current_state.charge = 0; // to proceed change color on power-on
+        low_bat_hnd();
+    }
     uloop_timeout_set(t, VBAT_POLL_INTERVAL);
 }
 

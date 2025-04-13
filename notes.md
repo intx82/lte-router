@@ -181,6 +181,18 @@ config wifi-iface 'default_radio0'
        option encryption 'none'
 ```
 
+For WPA encryption change `config wifi-iface 'default_radio0'` to:
+
+```
+config wifi-iface 'default_radio0'
+        option device 'radio0'
+        option network 'lan'
+        option mode 'ap'
+        option ssid '[access-point]'
+        option encryption 'psk2'
+        option key '[das-password]'
+```
+
 # Control LTE module power
 
 ```
@@ -237,10 +249,10 @@ config interface 'wwan'
 
 ## PCB V2->V3
 
-- [ ] Ethernet led connect to VCC instead of GND
-- [ ] Connect modem thru the diode to the VBAT (after Mosfet)
-- [ ] Change bc847 to bss138 and add to the Gate-GND resistor 100k
-- [ ] separate resistors to CC1 / CC2  (for each pin own - 5.1k)
+- [x] Ethernet led connect to VCC instead of GND
+- [x] Connect modem thru the diode to the VBAT (after Mosfet)
+- [x] Change bc847 to bss138 and add to the Gate-GND resistor 100k
+- [x] separate resistors to CC1 / CC2  (for each pin own - 5.1k)
 
 ## Wireguard config
 
@@ -289,6 +301,11 @@ config wireguard_wg0
        option persistent_keepalive '25'
 ```
 
+
+## Traffic count
+
+`AT+QGDCNT?`  - Packet Data Counter
+`AT+QNWINFO` - Information about network
 
 
 # Internet over SLIP
@@ -364,4 +381,3 @@ config interface 'wwan'
        option proto 'dhcp'  
        option ifname 'eth1'
 ```
-

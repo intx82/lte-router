@@ -34,10 +34,10 @@ start() {
 
         if [ "$charge" = "0" ]; then
             ubus call pmic set_led '{"r":0, "g":16, "b":48}'
-            $last_charge="0"
+            last_charge="0"
         elif [ "$charge" = "1" ]; then
             ubus call pmic set_led '{"r":48, "g":16, "b":0}'
-            $last_charge="1"
+            last_charge="1"
         fi
 
         if [ "$power" = "1" ]; then
